@@ -1,0 +1,20 @@
+{
+  "name": "ditto",
+  "version": "1.0.0",
+  "description": "Componente React para crear pantallas genéricas mediante un json de configuración",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lean93/ditto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lean93/ditto/issues"
+  },
+  "homepage": "https://github.com/lean93/ditto#readme"
+}
