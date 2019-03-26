@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "description": "Componente React para crear pantallas genéricas mediante un json de configuración",
   "main": "index.js",
+  "dependencies": {
+    "antd": "^3.10.1",
+    "apollo-boost": "^0.1.16",
+    "babel-plugin-import": "^1.10.0",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
+    "react": "^16.5.2",
+    "react-apollo": "^2.2.4",
+    "react-app-rewired": "^1.6.2",
+    "react-dom": "^16.5.2",
+    "react-json-view": "^1.19.1",
+    "react-scripts": "2.0.5",
+    "react-file-download": "0.3.5",
+    "axios": "0.17.1"
+  },
   "scripts": {
     "test": "mocha --require babel-core/register",
     "build": "npm run lint && babel ./src -d ./lib",
