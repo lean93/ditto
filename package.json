@@ -1,5 +1,5 @@
 {
-  "name": "ditto",
+  "name": "ditto-componoent",
   "version": "1.0.0",
   "description": "Componente React para crear pantallas genéricas mediante un json de configuración",
   "main": "index.js",
