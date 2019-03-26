@@ -2,7 +2,7 @@
   "name": "ditto-componoent",
   "version": "1.0.2",
   "description": "Componente React para crear pantallas genéricas mediante un json de configuración",
-  "main": "src/ditto/GenericFilter.js",
+  "main": "src/index.js",
   "dependencies": {
     "antd": "^3.10.1",
     "apollo-boost": "^0.1.16",
