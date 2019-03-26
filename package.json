@@ -20,9 +20,10 @@
   },
   "scripts": {
     "test": "mocha --require babel-core/register",
-    "build": "npm run lint && babel ./src -d ./lib",
     "lint": "eslint ./src",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "start": "webpack --mode development --config config/webpack.config.js --watch",
+    "build": "webpack --mode production --config config/webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
