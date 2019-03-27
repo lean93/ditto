@@ -43,6 +43,7 @@ export const getColumnsTable = (data)=>{
 }
 
 export const buildGraphQlQueryByName=(name, val, descr)=>{
+    import gql from 'graphql-tag';
     const queryString = "query Query{ " + name + "{ " + val + " " +descr+" }}";
     return gql([queryString]);
 }

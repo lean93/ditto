@@ -1,77 +1,61 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin")
 
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: `${__dirname}/app/index.html`,
-    filename: 'index.html',
-    inject: 'body'
-});
-
+const path = require('path')
 module.exports = {
-    entry: [
-        './app/index.js'
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, '../build'),
+    filename: 'index.js',
+    libraryTarget: 'commonjs2',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|build)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
-    output: {
-        filename: '[name].[chunkhash].js',
-        path: `${__dirname}/dist`,
+  },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React',
     },
-    // optimization: {
-    //    minimize: false
-    //},
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.(html)$/,
-                use: ['html-loader']
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            context: 'app/resources',
-                            name: 'images/[hash].[ext]'
-                        }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        query: {
-                            mozjpeg: {
-                                progressive: true
-                            },
-                            gifsicle: {
-                                interlaced: false
-                            },
-                            optipng: {
-                                optimizationLevel: 4
-                            },
-                            pngquant: {
-                                quality: '75-90',
-                                speed: 3
-                            }
-                        }
-                    }],
-                exclude: /node_modules/,
-                include: __dirname
-            }
-        ]
+    'prop-types': {
+       commonjs: 'prop-types',
+       commonjs2: 'prop-types',
+       amd: 'PropTypes',
+       root: 'PropTypes',
     },
-    plugins: [
-        HtmlWebpackPluginConfig,
-        new CompressionPlugin({
-            asset: "[path].gz[query]",
-            test: /\.js$|\.css$|\.html$/,
-            minRatio: 0.8
-        })
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.css'],
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      'prop-types': path.resolve(
+        __dirname, 
+        './node_modules/prop-types'
+      ),
+      'styled-components': path.resolve(
+        __dirname,
+        './node_modules/styled-components'
+      ),
+    },
+  },
+  plugins: [
+    new CompressionPlugin({
+        asset: "[path].gz[query]",
+        test: /\.js$|\.css$|\.html$/,
+        minRatio: 0.8
+    })
     ]
-};
+}
